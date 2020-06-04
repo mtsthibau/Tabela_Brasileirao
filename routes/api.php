@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('brasileirao', 'ControllerBrasileirao@indexJson');
+Route::get('classificacao', 'ControllerClassificacao@indexJson');
