@@ -24,9 +24,10 @@ class Main {
     renderTable(data) {
         var html
         for (var i = 0; i < data.length; i++) {
-            html += "<tr><th scope='row' class='" + this.setSituacao(i) + "'>" + (i + 1) + "</th><td>" + data[i].nome_clube + "</td><td>" + data[i].pontos + "</td><td>" + data[i].jogos_disputados + "</td></td>" +
-                "<td>" + data[i].vitorias + "</td><td>" + data[i].empates + "</td><td>" + data[i].derrotas + "</td><td>" + data[i].gols_pro + "</td><td>" +
-                data[i].gols_contra + "</td><td>" + data[i].saldo_gols + "</td></tr>"
+            html += "<tr><th scope='row'><span class='" + this.setSituacao(i) + "'>" + (i + 1) + "° </span> <img src='./image/" + data[i].brasao +
+                "' class='img-thumbnail' width='40'/> " + data[i].nome_clube + "</th><td><b>" + data[i].pontos + "</b></td><td>" +
+                data[i].jogos_disputados + "</td></td>" + "<td>" + data[i].vitorias + "</td><td>" + data[i].empates + "</td><td>" +
+                data[i].derrotas + "</td><td>" + data[i].gols_pro + "</td><td>" + data[i].gols_contra + "</td><td>" + data[i].saldo_gols + "</td></tr>"
         }
         $("#tbody").html(html)
     }

@@ -33,8 +33,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Clube</th>
+                        <th scope="col">Posição</th>
                         <th scope="col">PTS</th>
                         <th scope="col">J</th>
                         <th scope="col">V</th>

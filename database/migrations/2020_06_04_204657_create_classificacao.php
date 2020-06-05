@@ -24,6 +24,7 @@ class CreateClassificacao extends Migration
             $table->integer('gols_pro');
             $table->integer('gols_contra');
             $table->integer('saldo_gols');
+            $table->string('brasao');
             $table->timestamps();
         });
     }
