@@ -27,9 +27,6 @@
         <div class="ml-4 mr-4">
 
             <button class="btn btn-success float-right mb-3" id="insConfronto" data-toggle="modal" data-target="#exampleModal">Inserir confronto</button>
-            <div class="row">
-                <div class="alert alert-danger d-none ml-3 col col-6" role="alert" id="error"></div>
-            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>

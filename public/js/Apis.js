@@ -44,12 +44,13 @@ class Apis {
                 if (data.error) {
                     var main = new Main()
                     main.setError(data.error)
+                    return
                 }
                 return callBack(data);
             },
             error: function(data) {
                 main.setError("Erro durante download dos dados.Por favor tente novamente ")
-                return null;
+                return null
             }
         });
     }

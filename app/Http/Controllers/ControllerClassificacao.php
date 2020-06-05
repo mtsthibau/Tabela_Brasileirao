@@ -24,7 +24,7 @@ class ControllerClassificacao
         if (
             $rTimeCasa == null || $rVisitante == null || $rGolsTimeCasa  == null
             || $rGolsVisitante == null || $rGolsTimeCasa < 0 || $rGolsVisitante < 0
-            || $rTimeCasa == 0 || $rVisitante == 0
+            || $rTimeCasa == 0 || $rVisitante
         ) {
             return response()->json([
                 'error' => 'Dados inválidos, tente novamente.'
@@ -37,7 +37,6 @@ class ControllerClassificacao
         if (isset($timeCasa) && isset($visitante)) {
             $timeCasa->jogos_disputados += 1;
             $visitante->jogos_disputados += 1;
-
             $timeCasa->gols_pro += $rGolsTimeCasa;
             $timeCasa->gols_contra += $rGolsVisitante;
             $visitante->gols_pro += $rGolsVisitante;
