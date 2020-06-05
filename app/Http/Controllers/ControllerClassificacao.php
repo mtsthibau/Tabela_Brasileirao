@@ -35,6 +35,9 @@ class ControllerClassificacao
         $visitante = Classificacao::find($rVisitante);
 
         if (isset($timeCasa) && isset($visitante)) {
+            $timeCasa->jogos_disputados += 1;
+            $visitante->jogos_disputados += 1;
+
             $timeCasa->gols_pro += $rGolsTimeCasa;
             $timeCasa->gols_contra += $rGolsVisitante;
             $visitante->gols_pro += $rGolsVisitante;
