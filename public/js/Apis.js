@@ -42,6 +42,10 @@ class Apis {
             data: data,
             dataType: 'json',
             success: function(data) {
+                if (data.error) {
+                    var main = new Main()
+                    main.setError(data.error)
+                }
                 return callBack(data);
             },
             error: function(data) {

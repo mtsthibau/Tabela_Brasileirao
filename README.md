@@ -7,6 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Sobre Tabela Brasileirão por Matheus Thibau Paulino
+
+Projeto web com objetivo de seleção de candidatos para a vaga Developer (Desenvolvedor de Sistemas), anunciada pelo Grupo Bernoulli.
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

@@ -77,7 +77,8 @@ class Main {
                 $("#exampleModal").modal('hide')
                 $("#golsTimeCasa").val("0")
                 $("#golsVisitante").val("0")
-                $("#timeCasa select").val(0)
+                $("#timeCasa").val("0")
+                $("#visitante").val("0")
             })
 
             event.stopPropagation()

@@ -16,36 +16,37 @@ class ControllerClassificacao
 
     public function update(Request $request)
     {
+        $rTimeCasa =  $request->input('timeCasa');
+        $rGolsTimeCasa =  $request->input('golsTimeCasa');
+        $rVisitante = $request->input('visitante');
+        $rGolsVisitante =  $request->input('golsVisitante');
+
         if (
-            $request->input('timeCasa') == null || $request->input('visitante') == null || $request->input('golsTimeCasa')  == null
-            || $request->input('golsVisitante') == null || $request->input('golsTimeCasa') < 0 || $request->input('golsVisitante') < 0
-            || $request->input('timeCasa') == 0 || $request->input('visitante') == 0
+            $rTimeCasa == null || $rVisitante == null || $rGolsTimeCasa  == null
+            || $rGolsVisitante == null || $rGolsTimeCasa < 0 || $rGolsVisitante < 0
+            || $rTimeCasa == 0 || $rVisitante == 0
         ) {
-            return $this->indexJson();
+            return response()->json([
+                'error' => 'Dados inválidos, tente novamente.'
+            ]);
         }
 
-        $timeCasa = Classificacao::find($request->input('timeCasa'));
-        $visitante = Classificacao::find($request->input('visitante'));
-
+        $timeCasa = Classificacao::find($rTimeCasa);
+        $visitante = Classificacao::find($rVisitante);
 
         if (isset($timeCasa) && isset($visitante)) {
+            $timeCasa->gols_pro += $rGolsTimeCasa;
+            $timeCasa->gols_contra += $rGolsVisitante;
+            $visitante->gols_pro += $rGolsVisitante;
+            $visitante->gols_contra += $rGolsTimeCasa;
+            $timeCasa->saldo_gols += ($rGolsTimeCasa - $rGolsVisitante);
+            $visitante->saldo_gols += ($rGolsVisitante - $rGolsTimeCasa);
 
-
-            $timeCasa->gols_pro += $request->input('golsTimeCasa');
-            $timeCasa->gols_contra += $request->input('golsVisitante');
-
-            $visitante->gols_pro += $request->input('golsVisitante');
-            $visitante->gols_contra += $request->input('golsTimeCasa');
-
-            $timeCasa->saldo_gols += ($request->input('golsTimeCasa') - $request->input('golsVisitante'));
-            $visitante->saldo_gols += ($request->input('golsVisitante') - $request->input('golsTimeCasa'));
-
-
-            if ($request->input('golsTimeCasa') > $request->input('golsVisitante')) {
+            if ($rGolsTimeCasa > $rGolsVisitante) {
                 $timeCasa->pontos += 3;
                 $timeCasa->vitorias += 1;
                 $visitante->derrotas += 1;
-            } else if ($request->input('golsTimeCasa') == $request->input('golsVisitante')) {
+            } else if ($rGolsTimeCasa == $rGolsVisitante) {
                 $timeCasa->pontos += 1;
                 $timeCasa->empates += 1;
                 $visitante->pontos += 1;
@@ -58,7 +59,6 @@ class ControllerClassificacao
 
             $timeCasa->save();
             $visitante->save();
-
             return $this->indexJson();
         }
     }

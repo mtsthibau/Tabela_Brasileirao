@@ -25,7 +25,11 @@
 
     <content>
         <div class="ml-4 mr-4">
+
             <button class="btn btn-success float-right mb-3" id="insConfronto" data-toggle="modal" data-target="#exampleModal">Inserir confronto</button>
+            <div class="row">
+                <div class="alert alert-danger d-none ml-3 col col-6" role="alert" id="error"></div>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -71,7 +75,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col col-3">
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="timeCasa">
                                     <option selected value="0"> - </option>
@@ -83,13 +87,13 @@
                                 <input type="number" id="golsTimeCasa" class="form-control" value="0" min="0">
                             </div>
                         </div>
-                        X
+                        <span class="col col-1 separator text-center">X</span>
                         <div class="col col-2">
                             <div class="input-group mb-3">
                                 <input type="number" id="golsVisitante" class="form-control" value="0" min="0">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col col-3">
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="visitante">
                                     <option selected value="0"> - </option>
