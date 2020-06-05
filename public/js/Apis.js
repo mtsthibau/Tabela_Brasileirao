@@ -1,8 +1,4 @@
 class Apis {
-    constructor(brasileirao) {
-        this.brasileirao = brasileirao
-    }
-
     loadData() {
         var apis = new Apis()
 
@@ -15,13 +11,6 @@ class Apis {
 
     loadBrasileiraoData(callBack) {
         var url = "http://127.0.0.1:8000/api/classificacao"
-
-        //TOKEN LAREVEL
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            }
-        });
 
         $.ajax({
             url: url,
@@ -61,9 +50,4 @@ class Apis {
             }
         });
     }
-
-    getBrasileirao() {
-        return this.brasileirao
-    }
-
 }

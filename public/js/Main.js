@@ -12,11 +12,12 @@ class Main {
     load() {
         var apis = new Apis()
         apis.loadData()
+        this.registerEvents()
     }
 
     renderData(data) {
-        this.renderTable(data.brasileirao)
-        this.registerEvents(data.brasileirao)
+        main.setBrasileirao(data.brasileirao)
+        this.renderTable(main.getBrasileirao())
     }
 
 
@@ -30,14 +31,17 @@ class Main {
         $("#tbody").html(html)
     }
 
-    registerEvents(data) {
+    registerEvents() {
+
         $("#insConfronto").click(function() {
+            var data = main.getBrasileirao()
             var html
             for (var i = 0; i < data.length; i++) {
                 html += "<option value='" + data[i].id + "'>" + data[i].nome_clube + "</option>"
             }
             $("#timeCasa").append(html)
             $("#visitante").append(html)
+
         })
 
         $("#timeCasa").change(this, function() {
@@ -69,7 +73,14 @@ class Main {
                 apis.brasileirao = data
                 var main = new Main()
                 main.renderData(apis)
+
+                $("#exampleModal").modal('hide')
+                $("#golsTimeCasa").val("0")
+                $("#golsVisitante").val("0")
+                $("#timeCasa select").val(0)
             })
+
+            event.stopPropagation()
         })
 
     }
@@ -82,11 +93,21 @@ class Main {
     setSituacao(index) {
         if (index == 0) return "campeao"
 
-        if (index > 0 && index <= 6) return "libertadores"
+        else if (index > 0 && index <= 6) return "libertadores"
 
-        if (index > 6 && index <= 13) return "sulamericana"
+        else if (index > 6 && index <= 13) return "sulamericana"
 
-        if (index > 15 && index <= 19) return "rebaixamento"
+        else if (index > 15 && index <= 19) return "rebaixamento"
 
+        else return ""
     }
+
+    getBrasileirao() {
+        return this.brasileirao
+    }
+
+    setBrasileirao(brasileirao) {
+        this.brasileirao = brasileirao
+    }
+
 }

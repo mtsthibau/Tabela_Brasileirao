@@ -26,7 +26,7 @@
     <content>
         <div class="ml-4 mr-4">
             <button class="btn btn-success float-right mb-3" id="insConfronto" data-toggle="modal" data-target="#exampleModal">Inserir confronto</button>
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
