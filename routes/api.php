@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('classificacao', 'ControllerClassificacao@indexJson');
+Route::post('confronto', 'ControllerClassificacao@update');
+
+
+

@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Tabela Brasileirão para teste Desenvolvedor Bernoulli">
     <meta name="author" content="Matheus Thibau Paulino">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Tabela Brasileirão</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
 </head>
 
 <body onload="onLoadPage()">
@@ -56,6 +59,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="alert alert-danger d-none ml-3" role="alert" id="error"></div>
+                    </div>
+                    <div class="row">
                         <div class="col">
                             <label class="input-group">Time da Casa</label>
 
@@ -68,7 +74,7 @@
                         <div class="col">
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="timeCasa">
-                                    <option selected> - </option>
+                                    <option selected value="0"> - </option>
                                 </select>
                             </div>
                         </div>
@@ -86,14 +92,14 @@
                         <div class="col">
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="visitante">
-                                    <option selected> - </option>
+                                    <option selected value="0"> - </option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Fechar mudanças</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" id="submit">Salvar mudanças</button>
                     </div>
                 </div>
             </div>
