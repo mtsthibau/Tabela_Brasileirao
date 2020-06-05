@@ -24,7 +24,7 @@ class ControllerClassificacao
         if (
             $rTimeCasa == null || $rVisitante == null || $rGolsTimeCasa  == null
             || $rGolsVisitante == null || $rGolsTimeCasa < 0 || $rGolsVisitante < 0
-            || $rTimeCasa == 0 || $rVisitante
+            || $rTimeCasa == 0 || $rVisitante == 0
         ) {
             return response()->json([
                 'error' => 'Dados inválidos, tente novamente.'
